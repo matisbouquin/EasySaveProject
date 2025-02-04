@@ -124,8 +124,11 @@ jobs:
         working-directory: ${{ env.FOLDER_TEST_PATH }}
         run: .tools/reportgenerator -reports:'TestResults/**/coverage.cobertura.xml' -targetdir:'coverage-report'
 
-      - name: Generate badge JSON
-        working-directory: ${{ env.FOLDER_TEST_PATH }}
-        run: |
-          COVERAGE_PERCENT=$(jq '.coverage' coverage-report/Summary.json)
-          echo "{ \"coverage\": $COVERAGE_PERCENT }" > coverage-badge.json
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ${{ env.FOLDER_TEST_PATH }}/TestResults/**/coverage.cobertura.xml
+          flags: unittests
+          name: coverage-report
+
