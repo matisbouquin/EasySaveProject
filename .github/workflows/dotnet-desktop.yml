@@ -28,12 +28,6 @@ jobs:
       - name: Build project
         run: dotnet build ${{ env.SOLUTION_PATH }} --no-restore --configuration Release
 
-      - name: Package build artifact
-        run: |
-          mkdir artifact
-          cp -r $(find . -type d -name Release)/ artifact/
-          zip -r build-artifact.zip artifact/*
-
   create_release:
     runs-on: ubuntu-latest
     needs: build
