@@ -117,12 +117,15 @@ jobs:
         run: dotnet test --collect:"XPlat Code Coverage" --verbosity normal
 
       - name: Install reportgenerator (local installation)
+        working-directory: ${{ env.FOLDER_TEST_PATH }}
         run: dotnet tool install dotnet-reportgenerator-globaltool --tool-path .tools
 
       - name: Generate coverage report
+        working-directory: ${{ env.FOLDER_TEST_PATH }}
         run: .tools/reportgenerator -reports:'TestResults/**/coverage.cobertura.xml' -targetdir:'coverage-report'
 
       - name: Generate badge JSON
+        working-directory: ${{ env.FOLDER_TEST_PATH }}
         run: |
           COVERAGE_PERCENT=$(jq '.coverage' coverage-report/Summary.json)
           echo "{ \"coverage\": $COVERAGE_PERCENT }" > coverage-badge.json
