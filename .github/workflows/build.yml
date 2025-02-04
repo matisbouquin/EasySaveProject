@@ -125,9 +125,3 @@ jobs:
         run: |
           COVERAGE_PERCENT=$(jq '.coverage' coverage-report/Summary.json)
           echo "{ \"coverage\": $COVERAGE_PERCENT }" > coverage-badge.json
-
-      - name: Upload badge JSON
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage-badge
-          path: coverage-badge.json
