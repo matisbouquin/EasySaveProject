@@ -3,5 +3,6 @@
 - Amélioration des performances.
 - Correction de bugs mineurs.
 - Ajout de nouvelles fonctionnalités.
+- Realse trop bien nouveau
 
 ---
