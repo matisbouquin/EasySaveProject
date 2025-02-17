@@ -52,6 +52,9 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore ${{ env.SOLUTION_PATH }}
 
+      - name: Create /tmp directory
+        run: mkdir -p /tmp
+
       - name: Run Test Coverage
         run: dotnet test ${{ env.SOLUTION_PATH }} /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput="${{ github.workspace }}/EasySave_Project/EasySave_Project_Test/coverage/coverage.cobertura.xml"
 
