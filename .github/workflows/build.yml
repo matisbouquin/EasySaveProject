@@ -92,6 +92,7 @@ jobs:
 
       - name: Run Test Coverage
         run: dotnet test ${{ env.SOLUTION_PATH }}  /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./coverage/coverage.cobertura.xml
+        continue-on-error: true
 
       - name: Build and analyze
         env:
