@@ -8,42 +8,6 @@ env:
   DOTNET_VERSION: '8.0'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-
-      - name: Cache NuGet packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget-
-
-      - name: Restore dependencies
-        run: dotnet restore ${{ env.SOLUTION_PATH }}
-
-      - name: Build project
-        run: dotnet build ${{ env.SOLUTION_PATH }} --no-restore --configuration Release
-
-  commit_message_validation:
-    runs-on: ubuntu-latest
-    name: Commit Message Validation
-    steps:
-      - uses: actions/checkout@v3
-
-      - id: verify_commit_message
-        uses: uptownaravi/verify-commit-message-action@v2
-        with:
-          regex: '^(hotfix|release|feature|main|develop)\[.+\] : .+'
-  
   sonar:
     name: Sonar Cloud
     runs-on: windows-latest
@@ -95,7 +59,6 @@ jobs:
 
       - name: Run Test Coverage
         run: dotnet test ${{ env.SOLUTION_PATH }}  /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=./coverage/coverage.cobertura.xml
-        continue-on-error: true
 
       - name: Build and analyze
         env:
@@ -103,4 +66,5 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"matisbouquin_EasySaveProject" /o:"matisbouquin" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage/coverage.cobertura.xml
-          dotnet build ${{ env.SOLUTION_PATH }} --configuration Release .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          dotnet build ${{ env.SOLUTION_PATH }} --configuration Release
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
