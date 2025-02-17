@@ -72,8 +72,9 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Nécessaire pour l'analyse complète
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"matisbouquin_EasySaveProject" /o:"matisbouquin" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.cobertura.reportsPaths="D:/a/EasySaveProject/EasySaveProject/EasySave_Project/EasySave_Project_Test/coverage/coverage.cobertura.xml" /d:sonar.coverage.exclusions="**/*Test*.cs" /d:sonar.cs.vstest.reportsPaths="**/*.trx" /d:sonar.verbose=true
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"matisbouquin_EasySaveProject" /o:"matisbouquin" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.cobertura.reportsPaths="D:/a/EasySaveProject/EasySaveProject/EasySave_Project/EasySave_Project_Test/coverage/coverage.cobertura.xml" /d:sonar.coverage.exclusions="**/*Test*.cs" /d:sonar.cs.vstest.reportsPaths="**/*.trx" /d:sonar.verbose=true /d:sonar.scm.provider=git /d:sonar.scm.forceReloadAll=true
           dotnet build ${{ env.SOLUTION_PATH }} --configuration Release
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
