@@ -13,7 +13,7 @@
     "build": {
       "content": [
         {
-          "files": ["**/*.md", "documentation/**"]
+          "files": ["**/*.md", "documentation/**", "index.md"]
         }
       ],
       "output": "_site"
