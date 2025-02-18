@@ -55,19 +55,20 @@ jobs:
       - name: Create /tmp directory
         run: mkdir -p /tmp
 
-      - name: Run Test Coverage
-        run: dotnet test ${{ env.SOLUTION_PATH }} /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput="${{ github.workspace }}/EasySave_Project/EasySave_Project_Test/coverage/coverage.cobertura.xml"
+      - name: Install NUnit Test Adapter
+        run: dotnet add package NUnit3TestAdapter --version 4.4.0
 
-      - name: Debug - List coverage file
-        shell: powershell
-        run: |
-          Get-ChildItem -Path "EasySave_Project/EasySave_Project_Test/coverage" -Recurse
-          if (Test-Path "EasySave_Project/EasySave_Project_Test/coverage/coverage.cobertura.xml") {
-              Write-Host "Coverage file exists"
-              Get-Content "EasySave_Project/EasySave_Project_Test/coverage/coverage.cobertura.xml" -First 10
-          } else {
-              Write-Host "Coverage file does not exist"
-          }
+      - name: Run Tests with NUnit and Generate XML Report
+        run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=TestResult.trx" --results-directory ./TestResults
+
+      - name: Convert TRX to NUnit XML
+        run: dotnet tool install -g trx2xml && trx2xml ./TestResults/TestResult.trx ./TestResults/TestResult.xml
+
+      - name: Publish NUnit XML Test Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: NUnit-XML-Test-Results
+          path: ./TestResults/TestResult.xml
 
       - name: Build and analyze
         env:
