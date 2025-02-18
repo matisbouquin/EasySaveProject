@@ -56,7 +56,7 @@ jobs:
         run: mkdir -p /tmp
 
       - name: Install NUnit Test Adapter
-        run: dotnet add package NUnit3TestAdapter --version 4.4.0
+        run: dotnet add ${{ env.FOLDER_TEST_PATH }}/EasySave_Project_Test.csproj package NUnit3TestAdapter --version 4.4.0
 
       - name: Run Tests with NUnit and Generate XML Report
         run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=TestResult.trx" --results-directory ./TestResults
