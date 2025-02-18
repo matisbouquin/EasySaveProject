@@ -27,6 +27,8 @@ jobs:
 
     - run: dotnet tool update -g docfx
     - run: docfx EasySave_Project/EasySave_Project/docfx.json
+    - name: Disable Jekyll
+      run: touch EasySave_Project/EasySave_Project/_site/.nojekyll
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
