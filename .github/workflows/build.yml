@@ -59,7 +59,7 @@ jobs:
         run: dotnet add ${{ env.FOLDER_TEST_PATH }}/EasySave_Project_Test.csproj package NUnit3TestAdapter --version 4.4.0
 
       - name: Run Tests with NUnit and Generate XML Report
-        run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=TestResult.trx" --results-directory ./TestResults
+        run: dotnet test ${{ env.SOLUTION_PATH }}  --no-build --configuration Release --logger "trx;LogFileName=TestResult.trx" --results-directory ./TestResults
 
       - name: Convert TRX to NUnit XML
         run: dotnet tool install -g trx2xml && trx2xml ./TestResults/TestResult.trx ./TestResults/TestResult.xml
