@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<testsuites time="0.894" tests="17" failures="0">
+  <testsuite id="0" name="/private/tmp/EasySaveProject/EasySave_Project/EasySave_Project_Test/bin/Debug/net8.0/EasySave_Project_Test.dll" tests="17" failures="0" time="0.894">
+    <testcase classname="EasySave_Project_Test.Features.JobsCreationSteps.JobsCreation_CreateJobCommand_CreateNewBackupJobFeature" name="CreateAJobWithAnInvalidJobType" time="0.0785349" />
+    <testcase classname="EasySave_Project_Test.Features.JobsCreationSteps.JobsCreation_CreateJobCommand_CreateNewBackupJobFeature" name="CreateAJobWithAnInvalidNameEmptyString" time="0.0493220" />
+    <testcase classname="EasySave_Project_Test.Features.JobsCreationSteps.JobsCreation_CreateJobCommand_CreateNewBackupJobFeature" name="CreateAJobWithAnInvalidSourceFilePath" time="0.0453370" />
+    <testcase classname="EasySave_Project_Test.Features.JobsCreationSteps.JobsCreation_CreateJobCommand_CreateNewBackupJobFeature" name="CreateAJobWithAnInvalidTargetFilePath" time="0.0460030" />
+    <testcase classname="EasySave_Project_Test.Features.JobsCreationSteps.JobsCreation_CreateJobCommand_CreateNewBackupJobFeature" name="CreateANewJobWithValidNameSourceTargetAndJobType" time="0.0992420" />
+    <testcase classname="EasySave_Project_Test.Features.JobsCreationSteps.JobsCreation_CreateJobCommand_CreateNewBackupJobFeature" name="CreateUpTo5JobsSuccessfullyAndFailOnThe6Th(&quot;Backup Project 1&quot;,&quot;I should see a success message \&quot;Job created successfully\&quot;&quot;,null)" time="0.0460580" />
+    <testcase classname="EasySave_Project_Test.Features.JobsCreationSteps.JobsCreation_CreateJobCommand_CreateNewBackupJobFeature" name="CreateUpTo5JobsSuccessfullyAndFailOnThe6Th(&quot;Backup Project 2&quot;,&quot;I should see a success message \&quot;Job created successfully\&quot;&quot;,null)" time="0.0577390" />
+    <testcase classname="EasySave_Project_Test.Features.JobsCreationSteps.JobsCreation_CreateJobCommand_CreateNewBackupJobFeature" name="CreateUpTo5JobsSuccessfullyAndFailOnThe6Th(&quot;Backup Project 3&quot;,&quot;I should see a success message \&quot;Job created successfully\&quot;&quot;,null)" time="0.0682249" />
+    <testcase classname="EasySave_Project_Test.Features.JobsCreationSteps.JobsCreation_CreateJobCommand_CreateNewBackupJobFeature" name="CreateUpTo5JobsSuccessfullyAndFailOnThe6Th(&quot;Backup Project 4&quot;,&quot;I should see a success message \&quot;Job created successfully\&quot;&quot;,null)" time="0.0536810" />
+    <testcase classname="EasySave_Project_Test.Features.JobsCreationSteps.JobsCreation_CreateJobCommand_CreateNewBackupJobFeature" name="CreateUpTo5JobsSuccessfullyAndFailOnThe6Th(&quot;Backup Project 5&quot;,&quot;I should see a success message \&quot;Job created successfully\&quot;&quot;,null)" time="0.0519900" />
+    <testcase classname="EasySave_Project_Test.Features.JobsCreationSteps.JobsCreation_CreateJobCommand_CreateNewBackupJobFeature" name="CreateUpTo5JobsSuccessfullyAndFailOnThe6Th(&quot;Backup Project 6&quot;,&quot;I should see an error message \&quot;Cannot create more than 5 jobs\&quot;&quot;,null)" time="0.0468040" />
+    <testcase classname="EasySave_Project_Test.Features.JobsCreationSteps.JobsCreation_CreateJobCommand_CreateNewBackupJobFeature" name="VerifyTheJobAppearsInTheConfigFileAndTheIndexIsCorrect" time="0.0728530" />
+    <testcase classname="EasySave_Project_Test.Features.JobsCreationSteps.JobsCreation_CreateJobCommand_CreateNewBackupJobFeature" name="VerifyTheJobAppearsInTheJobListAfterCreation" time="0.0536480" />
+    <testcase classname="EasySave_Project_Test.Features.ProjectInitializationSteps.ProjectInitialization_EnsureDirectoryCreation_VerifyConfigurationDirectoryAndConfigFileCreationFeature" name="VerifyTheCreationOfTheConfigurationDirectoryIfItDoesNotExist" time="0.0255260" />
+    <testcase classname="EasySave_Project_Test.Features.ProjectInitializationSteps.ProjectInitialization_EnsureDirectoryCreation_VerifyConfigurationDirectoryAndConfigFileCreationFeature" name="VerifyTheCreationOfTheJobsSetting_JsonFileWithDefaultSettings" time="0.0575910" />
+    <testcase classname="EasySave_Project_Test.Features.ProjectInitializationSteps.ProjectInitialization_EnsureJobsCreation_LoadJobsFromJobsSetting_JsonFeature" name="VerifyThatJobsAreLoadedFromTheJobsSetting_JsonFileIfItExists" time="0.0388380" />
+    <testcase classname="EasySave_Project_Test.Tests" name="Test1" time="0.0022269" />
+  </testsuite>
+</testsuites>
