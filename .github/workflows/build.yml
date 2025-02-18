@@ -63,7 +63,7 @@ jobs:
         with:
           name: Test-Results
           path: ${{ env.FOLDER_TEST_PATH }}/TestResults/TestResults.trx
-
+ 
 
       - name: Build and analyze
         env:
