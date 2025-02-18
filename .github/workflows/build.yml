@@ -55,11 +55,8 @@ jobs:
       - name: Create /tmp directory
         run: mkdir -p /tmp
 
-      - name: Install NUnit Test Adapter
-        run: dotnet add ${{ env.FOLDER_TEST_PATH }}/EasySave_Project_Test.csproj package NUnit3TestAdapter --version 4.4.0
-
-      - name: Run Tests with NUnit and Generate XML Report
-        run: dotnet test ${{ env.SOLUTION_PATH }}  --no-build --configuration Release --logger "trx;LogFileName=TestResult.trx" --results-directory ./TestResults
+      - name: Run Tests and Generate TRX Report
+        run: dotnet test ${{ env.SOLUTION_PATH }} --logger "trx;LogFileName=TestResults.trx"
 
       - name: Build and analyze
         env:
