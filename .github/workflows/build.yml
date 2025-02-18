@@ -7,6 +7,30 @@ env:
   DOTNET_VERSION: '8.0'
 
 jobs:
+  publish-docs:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Dotnet Setup
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.x
+
+    - run: dotnet tool update -g docfx
+    - run: docfx EasySave_Project/EasySave_Project/docfx.json
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        # Upload entire repository
+        path: 'EasySave_Project/EasySave_Project/_site'
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
   sonar:
     name: Sonar Cloud
     runs-on: windows-latest

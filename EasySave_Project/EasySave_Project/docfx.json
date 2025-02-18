@@ -1,0 +1,22 @@
+{
+    "metadata": [
+      {
+        "src": [
+          {
+            "files": ["**/*.cs"],
+            "exclude": ["**/bin/**", "**/obj/**"]
+          }
+        ],
+        "dest": "documentation"
+      }
+    ],
+    "build": {
+      "content": [
+        {
+          "files": ["**/*.md", "documentation/**"]
+        }
+      ],
+      "output": "_site"
+    }
+  }
+  
