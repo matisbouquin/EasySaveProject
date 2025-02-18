@@ -86,6 +86,9 @@ jobs:
       - name: Create /tmp directory
         run: mkdir -p /tmp
 
+      - name: Install tools
+        run: dotnet tool install -g dotnet-reportgenerator-globaltool
+
       - name: Run Tests and Generate HTML Report
         run: dotnet test ${{ env.SOLUTION_PATH }} /p:CollectCoverage=true /p:CoverletOutput=./coverage/ /p:CoverletOutputFormat=opencover
       
